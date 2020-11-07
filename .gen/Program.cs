@@ -17,6 +17,7 @@ namespace WebGenerator
                 .CreateWeb(args)
                 .ConfigureEngine(x =>
                 {
+                    Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
                     x.FileSystem.RootPath = new NormalizedPath(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent;
                     x.FileSystem.OutputPath = x.FileSystem.RootPath / ArtifactsFolder;
                     x.FileSystem.InputPaths.Clear();
