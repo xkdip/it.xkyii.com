@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Deploy
-      run: dotnet run -- deploy
+      run: dotnet run -c Release -- deploy
       working-directory: .gen
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

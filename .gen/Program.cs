@@ -17,20 +17,23 @@ namespace WebGenerator
             return await Bootstrapper
                 .Factory
                 .CreateWeb(args)
+#if !DEBUG
+                .AddSetting("SiteTitle", "Program Title")
                 .ConfigureEngine(x =>
                 {
-                    x.FileSystem.RootPath = rootPath;
-                    x.FileSystem.TempPath = "temp";
-                    x.FileSystem.OutputPath = x.FileSystem.RootPath / ArtifactsFolder;
+                   x.FileSystem.RootPath = rootPath;
+                   x.FileSystem.TempPath = "temp";
+                   x.FileSystem.OutputPath = x.FileSystem.RootPath / ArtifactsFolder;
                 })
                 .SetThemePath(rootPath / "theme")
                 .AddSetting(WebKeys.InputPaths, new [] { rootPath / "docs" })
-                // .AddSetting(WebKeys.ExcludedPaths, new List<NormalizedPath>
-                // {
-                //     new NormalizedPath(".gen"),
-                //     new NormalizedPath(".github"),
-                //     new NormalizedPath(".git"),
-                // })
+                .AddSetting(WebKeys.ExcludedPaths, new List<NormalizedPath>
+                {
+                    new NormalizedPath(".gen"),
+                    new NormalizedPath(".github"),
+                    new NormalizedPath(".git"),
+                })
+#endif
                 .RunAsync();
         }
     }

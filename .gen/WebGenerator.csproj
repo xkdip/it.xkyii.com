@@ -13,7 +13,7 @@
   <Choose>
     <When Condition=" '$(LocalReferences)' == 'true'">
       <ItemGroup>
-        <ProjectReference Include="..\..\..\forks\Statiq.Web\src\Statiq.Web\Statiq.Web.csproj" />
+        <ProjectReference Include="..\..\..\xkForks\Statiq.Web\src\Statiq.Web\Statiq.Web.csproj" />
       </ItemGroup>
     </When>
     <Otherwise>
