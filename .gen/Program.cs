@@ -11,24 +11,27 @@ namespace WebGenerator
     {
         private static readonly NormalizedPath ArtifactsFolder = "artifacts";
 
-        public static async Task<int> Main(string[] args) =>
-            await Bootstrapper
+        public static async Task<int> Main(string[] args)
+        {
+            var rootPath = new NormalizedPath(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent;
+            return await Bootstrapper
                 .Factory
                 .CreateWeb(args)
                 .ConfigureEngine(x =>
                 {
-                    Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
-                    x.FileSystem.RootPath = new NormalizedPath(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent;
+                    x.FileSystem.RootPath = rootPath;
+                    x.FileSystem.TempPath = "temp";
                     x.FileSystem.OutputPath = x.FileSystem.RootPath / ArtifactsFolder;
-                    x.FileSystem.InputPaths.Clear();
-                    x.FileSystem.InputPaths.Add(x.FileSystem.RootPath);
                 })
-                .AddSetting(WebKeys.ExcludedPaths, new List<NormalizedPath>
-                {
-                    new NormalizedPath(".gen"),
-                    new NormalizedPath(".github"),
-                    new NormalizedPath(".git"),
-                })
+                .SetThemePath(rootPath / "theme")
+                .AddSetting(WebKeys.InputPaths, new [] { rootPath / "docs" })
+                // .AddSetting(WebKeys.ExcludedPaths, new List<NormalizedPath>
+                // {
+                //     new NormalizedPath(".gen"),
+                //     new NormalizedPath(".github"),
+                //     new NormalizedPath(".git"),
+                // })
                 .RunAsync();
+        }
     }
 }
