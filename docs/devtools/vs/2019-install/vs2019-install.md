@@ -1,8 +1,9 @@
 ---
-title: Virtual Studio 安装
+title: Virtual Studio 2019 安装
 layout: post
 catagory: 开发工具
 notebook: 开发工具
+DestinationFileName: index.html
 comment:
   - 使用手机网络避免安装问题
   - 禁用git
