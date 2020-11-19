@@ -1,11 +1,9 @@
 ---
-title: Scoop 备忘
+title: Fork 无法找到Git实例
 layout: post
 catagory: 开发工具
 notebook: 开发工具
 DestinationFileName: index.html
 comment:
-  - 修改安装目录
-  - 常用的bucket
-  - 常用的app
+  - 主要是如何配置gitinstance
 ---
