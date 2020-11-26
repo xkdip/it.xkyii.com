@@ -1,4 +1,4 @@
- ---
+---
 title: Github 访问私有链接
 layout: post
 catagory: 开发工具
@@ -7,8 +7,9 @@ tag: 未完成
 DestinationFileName: index.html
 ---
 
+
 <div style="display:none">
-   var url = `https://raw.githubusercontent.com/xkdip/vkyii.github.io/master/CNAME`;
+    var url = `https://raw.githubusercontent.com/xkdip/vkyii.github.io/master/CNAME`;
 
     // var xhr =new XMLHttpRequest();
     // xhr.open("Get", url, true);
@@ -28,5 +29,6 @@ DestinationFileName: index.html
       .catch(() => {
         throw new Error('File unreachable');
       });
+
 </div>
 
