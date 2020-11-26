@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="theme-color" content="#157878">
-    <title>Scoop &#x5907;&#x5FD8;</title>
+    <title>Github &#x8BBF;&#x95EE;&#x79C1;&#x6709;&#x94FE;&#x63A5;</title>
     <link href="/scss/style.css" rel="stylesheet">
 </head>
 
@@ -42,12 +42,32 @@
 
 
   <section class="page-header" style="padding-top: 80px; padding-bottom: 40px; background: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.0)), url('/assets/img/home-header.jpg') center center repeat;">
-    <h1 class="project-name">Scoop &#x5907;&#x5FD8;</h1>
+    <h1 class="project-name">Github &#x8BBF;&#x95EE;&#x79C1;&#x6709;&#x94FE;&#x63A5;</h1>
       <a>&#x672A;&#x5B8C;&#x6210;</a>
   </section>
 
   <section class="main-content">
-    
+    <div style="display:none">
+    var url = `https://raw.githubusercontent.com/xkdip/vkyii.github.io/master/CNAME`;
+<p>    // var xhr =new XMLHttpRequest();
+    // xhr.open(&quot;Get&quot;, url, true);
+    // xhr.setRequestHeader('Authorization', 'token 02e44bd17da15685788a82dd6787fe2c2fd497ef');
+    // xhr.send();</p>
+<p>    fetch('https://api.github.com/repos/xkdip/vkyii.github.io/contents/CNAME', {
+      headers: {
+        'Authorization': 'token 02e44bd17da15685788a82dd6787fe2c2fd497ef',
+        'Accept': 'application/vnd.github.v3.raw',
+      },
+    })
+      //.then(response =&gt; response.buffer())
+      .then(response =&gt; {
+        console.log(response.body.text());
+      })
+      .catch(() =&gt; {
+        throw new Error('File unreachable');
+      });</p>
+</div>
+
 
     <!-- Site Header -->
     <footer class="site-footer">
