@@ -24,3 +24,4 @@ DestinationFileName: index.html
 
 
 [1]: https://www.jianshu.com/p/9be87e7e15bf
+[2]: https://daringfireball.net/projects/markdown/syntax#link
