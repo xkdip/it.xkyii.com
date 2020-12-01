@@ -1,7 +1,7 @@
 ---
 title: Scoop 备忘
 layout: post
-catagory: 开发工具
+category: 开发工具
 notebook: 开发工具
 tag: 未完成
 DestinationFileName: index.html

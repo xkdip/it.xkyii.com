@@ -1,7 +1,7 @@
 ---
 title: Github 访问私有链接
 layout: post
-catagory: 开发工具
+category: 开发工具
 notebook: 开发工具
 tag: 未完成
 DestinationFileName: index.html
@@ -31,4 +31,6 @@ DestinationFileName: index.html
       });
 
 </div>
+
+[1](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)
 
