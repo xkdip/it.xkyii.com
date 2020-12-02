@@ -1,7 +1,7 @@
 ---
 title: Python 修改Pip源
 layout: post
-catagory: 开发语言
+category: 开发语言
 notebook: 开发语言
 tag: 未完成
 DestinationFileName: index.html

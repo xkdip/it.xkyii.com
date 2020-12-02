@@ -1,7 +1,7 @@
 ---
 title: youtube-dl 下载喜马拉雅音频
 layout: post
-catagory: 软件工具
+category: 软件工具
 notebook: 软件工具
 tag: 未完成
 DestinationFileName: index.html
