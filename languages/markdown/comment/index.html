@@ -43,11 +43,65 @@
 
   <section class="page-header" style="padding-top: 80px; padding-bottom: 40px; background: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.0)), url('/assets/img/home-header.jpg') center center repeat;">
     <h1 class="project-name">Markdown &#x6CE8;&#x91CA;</h1>
-      <a>&#x672A;&#x5B8C;&#x6210;</a>
+      <a>Markdown</a>
   </section>
 
   <section class="main-content">
-    <div class="footnotes">
+    <p>写<del>代码</del>(Bug)时，注释是很重要的，可以快乐地吐槽而不暴露，可以在代码之外给你的接任者更进一步的误导；</p>
+<p>那么写<strong>Markdown</strong>怎么能少了这么重要的部分呢？</p>
+<p>总结了几个方法，埋点操作起来。</p>
+<h2 id="html">方式一：Html隐藏</h2>
+<p>Markdown文档最终是渲染为html来展示的，所以可以以如下形式不可见：</p>
+<pre><code class="language-html">&lt;div style=&quot;display:none&quot;&gt;这是一段注释&lt;/div&gt;
+</code></pre>
+<div style="display:none">如果看到我，说明隐藏失败</div>
+<h2 id="xml">方式二：Xml注释</h2>
+<pre><code class="language-xml">&lt;!--
+整段整段的不可见内容
+--&gt;
+</code></pre>
+<!--
+如果看到我，说明隐藏失败
+-->
+<h2 id="markdown-reference-links">方式三：Markdown reference Links</h2>
+<p>Markdown的链接(link)基本形式有两种:</p>
+<p>其一为<strong>inline</strong>：</p>
+<pre><code class="language-markdown">[Inline style](http://example.com/ &quot;标题&quot;)
+</code></pre>
+<p>其二为<strong>reference</strong>：</p>
+<pre><code class="language-markdown">[Reference style][id1]
+
+[id1]: http://example.com/ (标题)
+[id2]: http://example.com/ &quot;标题&quot;
+</code></pre>
+<p>在<strong>reference</strong>形式中，链接(link)分成了展示部分和引用部分，其中引用(reference)部分是不直接显示出来的。</p>
+<p>如果你经常使用<strong>Typora</strong>进行<strong>Markdown</strong>文档的写作的话，应该会发现<strong>Typora</strong>通常都是这样处理链接(link)的，引用(reference)的部分链接都放在文档的最后，可以一定程度上保持主体文档的简洁。</p>
+<p>到此，注释的形式就很多了：</p>
+<pre><code class="language-markdown">[comment]: &lt;&gt; (一段注释)
+[comment]: # (一段注释)
+[//]: // (一段注释)
+[//]: 一段注释
+
+[^_^]: 开心注释
+
+[&gt;_&lt;]:
+  抓狂注释
+
+[&gt;_&gt;]: #
+  (
+    斜眼分段注释
+    斜眼分段注释
+    被视为Title，所以要用括号或引用框起来
+  )
+</code></pre>
+<h2 id="section">参考</h2>
+<ul>
+<li><a href="https://www.jianshu.com/p/9be87e7e15bf">如何在 Markdown 注释一段文字</a></li>
+<li><a href="https://daringfireball.net/projects/markdown/syntax#link">Comments in Markdown</a></li>
+<li><a href="https://stackoverflow.com/questions/4823468/comments-in-markdown">Markdown: Syntax#links</a></li>
+</ul>
+<p>本文完</p>
+<div class="footnotes">
 <hr />
 <ol>
 </ol>
