@@ -87,5 +87,9 @@ Markdown的链接(link)基本形式有两种:
     如果看到我，说明隐藏失败
   )
 
+## 参考
+* [如何在 Markdown 注释一段文字](https://www.jianshu.com/p/9be87e7e15bf)
+* [Comments in Markdown](https://daringfireball.net/projects/markdown/syntax#link)
+* [Markdown: Syntax#links](https://stackoverflow.com/questions/4823468/comments-in-markdown)
 
 本文完
