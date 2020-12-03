@@ -170,6 +170,10 @@ scoop bucket add <仓库名> <仓库地址>
 ## 处理失败
 前面的介绍听起来很不错对吧，实际上由于上网的科学性，加上Scoop里面相当多的App都发布在[github](https://github.com/)上，你可能经常性地遭遇到一个几兆几十兆的软件大半个小时下载不了，还经常下载失败，像这样：
 ```powershell
+scoop install potplayer
+```
+
+```powershell
 Installing 'potplayer' (201021) [64bit]
 Starting download with aria2 ...
 Download: Download Results:
