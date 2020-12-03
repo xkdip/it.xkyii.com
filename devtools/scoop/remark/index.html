@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="theme-color" content="#157878">
-    <title>Scoop &#x5907;&#x5FD8;</title>
+    <title>Scoop - Windows&#x4E0B;&#x7684;&#x5305;&#x7BA1;&#x7406;&#x5DE5;&#x5177;</title>
     <link href="/scss/style.css" rel="stylesheet">
 </head>
 
@@ -42,12 +42,192 @@
 
 
   <section class="page-header" style="padding-top: 80px; padding-bottom: 40px; background: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.0)), url('/assets/img/home-header.jpg') center center repeat;">
-    <h1 class="project-name">Scoop &#x5907;&#x5FD8;</h1>
-      <a>&#x672A;&#x5B8C;&#x6210;</a>
+    <h1 class="project-name">Scoop - Windows&#x4E0B;&#x7684;&#x5305;&#x7BA1;&#x7406;&#x5DE5;&#x5177;</h1>
   </section>
 
   <section class="main-content">
-    
+    <h2 id="scoop">安装Scoop</h2>
+<p>确保已经安装了：</p>
+<ul>
+<li><a href="https://aka.ms/wmf5download">PowerShell 5</a>(或更高版本，包括<a href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6">PowerShell Core</a>)</li>
+<li><a href="https://www.microsoft.com/net/download">.Net Framework 4.5</a>(或更高版本)</li>
+</ul>
+<p>Windows10基本上都满足。</p>
+<p>以下命令都在<strong>Powershell</strong>中执行！</p>
+<p>Scoop默认安装到<strong>C:\Scoop</strong>目录，如果你像我一样需要换一个安装目录，先做一点点额外的工作(注意替换为你安装Scoop的目录)：</p>
+<pre><code class="language-powershell">$env:SCOOP='D:\Scoop'
+[environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User')
+</code></pre>
+<p>然后运行如下内容，进行Scoop的安装</p>
+<pre><code class="language-powershell">Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+iwr -useb get.scoop.sh | iex
+</code></pre>
+<p>输入<code>scoop</code>出现帮助信息即安装成功:</p>
+<pre><code class="language-powershell">Usage: scoop &lt;command&gt; [&lt;args&gt;]
+
+Some useful commands are:
+
+alias       Manage scoop aliases
+bucket      Manage Scoop buckets
+cache       Show or clear the download cache
+checkup     Check for potential problems
+cleanup     Cleanup apps by removing old versions
+config      Get or set configuration values
+create      Create a custom app manifest
+depends     List dependencies for an app
+export      Exports (an importable) list of installed apps
+help        Show help for a command
+hold        Hold an app to disable updates
+home        Opens the app homepage
+info        Display information about an app
+install     Install apps
+list        List installed apps
+prefix      Returns the path to the specified app
+reset       Reset an app to resolve conflicts
+search      Search available apps
+status      Show status and check for new app versions
+unhold      Unhold an app to enable updates
+uninstall   Uninstall an app
+update      Update apps, or Scoop itself
+virustotal  Look for app's hash on virustotal.com
+which       Locate a shim/executable (similar to 'which' on Linux)
+
+
+Type 'scoop help &lt;command&gt;' to get help for a specific command.
+</code></pre>
+<h2 id="section">查找软件</h2>
+<p>我们找个<a href="https://aria2.github.io/">aria2</a>来试试，Scoop甚至默认使用<a href="https://aria2.github.io/">aria2</a>来进行多连接下载</p>
+<pre><code class="language-powershell">scoop search aria2
+</code></pre>
+<p>在<strong>main</strong>仓库中找到：</p>
+<pre><code class="language-powershell">'main' bucket:
+    aria2 (1.35.0-1)
+</code></pre>
+<h2 id="section-1">安装软件</h2>
+<p>找到以后，开始安装:</p>
+<pre><code class="language-powershell">scoop install aria2
+</code></pre>
+<p>安装成功：</p>
+<pre><code class="language-powershell">Installing 'aria2' (1.35.0-1) [64bit]
+Loading aria2-1.35.0-win-64bit-build1.zip from cache
+Checking hash of aria2-1.35.0-win-64bit-build1.zip ... ok.
+Extracting aria2-1.35.0-win-64bit-build1.zip ... done.
+Linking D:\Scoop\apps\aria2\current =&gt; D:\Scoop\apps\aria2\1.35.0-1
+Creating shim for 'aria2c'.
+'aria2' (1.35.0-1) was installed successfully!
+</code></pre>
+<h2 id="section-2">更新软件</h2>
+<p>使用<strong>status</strong>来查看软件状态</p>
+<pre><code class="language-powershell"># 查看一个软件的状态
+scoop status aria2
+
+# 查看已经安装的全部软件的(更新)状态
+scoop status
+</code></pre>
+<p>结果：</p>
+<pre><code class="language-powershell">Scoop is up to date.
+Updates are available for:
+    bandizip: 7.09 -&gt; 7.13
+    curl: 7.71.1 -&gt; 7.73.0_5
+    everything: 1.4.1.986 -&gt; 1.4.1.1000
+    fastcopy: 3.86 -&gt; 3.92
+    ffmpeg: 4.2.2 -&gt; 4.3.1-26
+    fork: 1.55.5 -&gt; 1.56.1
+    git: 2.29.2.windows.1 -&gt; 2.29.2.windows.2
+    IntelliJ-IDEA-Ultimate: 2020.2.3-202.7660.26 -&gt; 2020.3-203.5981.155
+    microsoftedge: 86.0.622.68 -&gt; 87.0.664.52
+    nodejs: 14.2.0 -&gt; 15.3.0
+    ojdkbuild8: 1.8.0.252-2.b09 -&gt; 1.8.0.275-1.b01
+    postman: 7.21.2 -&gt; 7.36.0
+    shadowsocks: 4.1.9.2 -&gt; 4.3.0.0
+    tomcat: 9.0.33 -&gt; 9.0.40
+    typora: 0.9.89 -&gt; 0.9.96
+    youtube-dl: 2020.11.24 -&gt; 2020.12.02
+</code></pre>
+<p>结果里显示的是可以进行升级的软件（再也不用烦恼每个软件都来催你更新了）。</p>
+<p>可以对指定的软件进行更新：</p>
+<pre><code class="language-powershell">scoop update curl
+</code></pre>
+<p>也可以全部更新:</p>
+<pre><code class="language-powershell">scoop update *
+</code></pre>
+<h2 id="section-3">卸载软件</h2>
+<p>使用<strong>uninstall</strong>来卸载</p>
+<pre><code class="language-powershell">scoop uninstall aria2
+</code></pre>
+<h2 id="bucket">Bucket(仓库)</h2>
+<p>官方的<strong>main</strong>仓库主要包含无界面的软件（键盘党喜笑颜开），好消息是社区维护了一批仓库，你可以这样查看有哪些：</p>
+<pre><code class="language-powershell">scoop bucket known
+</code></pre>
+<p>目前有这些</p>
+<pre><code class="language-powershell">main
+extras
+versions
+nightlies
+nirsoft
+php
+nerd-fonts
+nonportable
+java
+games
+jetbrains
+</code></pre>
+<p>比如，把<strong>extra</strong>装上，毕竟是<strong>known</strong>，所以无需指定<strong>git仓库</strong></p>
+<pre><code class="language-powershell">scoop bucket add extra
+</code></pre>
+<p>如果需要添加第三方的仓库，则需要指定仓库地址了：</p>
+<pre><code class="language-powershell">scoop bucket add &lt;仓库名&gt; &lt;仓库地址&gt;
+</code></pre>
+<h2 id="section-4">处理失败</h2>
+<p>前面的介绍听起来很不错对吧，实际上由于上网的科学性，加上Scoop里面相当多的App都发布在<a href="https://github.com/">github</a>上，你可能经常性地遭遇到一个几兆几十兆的软件大半个小时下载不了，还经常下载失败，像这样：</p>
+<pre><code class="language-powershell">scoop install potplayer
+</code></pre>
+<pre><code class="language-powershell">Installing 'potplayer' (201021) [64bit]
+Starting download with aria2 ...
+Download: Download Results:
+Download: gid   |stat|avg speed  |path/URI
+Download: ======+====+===========+=======================================================
+Download: d91ea6|ERR |       0B/s|D:/Scoop/cache/potplayer#201021#https_t1.daumcdn.net_potplayer_PotPlayer_Version_201021_PotPlayerSetup64.exe_dl.7z
+Download: Status Legend:
+Download: (ERR):error occurred.
+Download: aria2 will resume download if the transfer is restarted.
+Download: If there are any errors, then see the log file. See '-l' option in help/man page for details.
+
+ERROR Download failed! (Error 2) Timeout
+ERROR https://t1.daumcdn.net/potplayer/PotPlayer/Version/201021/PotPlayerSetup64.exe#/dl.7z
+    referer=https://t1.daumcdn.net/potplayer/PotPlayer/Version/201021/PotPlayerSetup64.exe#/
+    dir=D:\Scoop\cache
+    out=potplayer#201021#https_t1.daumcdn.net_potplayer_PotPlayer_Version_201021_PotPlayerSetup64.exe_dl.7z
+
+ERROR &amp; 'D:\Scoop\apps\aria2\current\aria2c.exe' --input-file='D:\Scoop\cache\potplayer.txt' --user-agent='Scoop/1.0 (+http://scoop.sh/) PowerShell/5.1 (Windows NT 10.0; Win64; x64; Desktop)' --allow-overwrite=true --auto-file-renaming=false --retry-wait=2 --split=5 --max-connection-per-server=5 --min-split-size=5M --console-log-level=warn --enable-color=false --no-conf=true --follow-metalink=true --metalink-preferred-protocol=https --min-tls-version=TLSv1.2 --stop-with-process=12148 --continue --summary-interval 0
+
+Please try again or create a new issue by using the following link and paste your console output:
+https://github.com/lukesampson/scoop-extras/issues/new?title=potplayer%40201021%3a+download+via+aria2+failed
+</code></pre>
+<p>从错误信息里面，我们可以找到其下载地址，即<strong>ERROR</strong>中的<strong>referer</strong>，用你自己的途径（看好你哦）下载过来，然后改名为<strong>out</strong>指定的值，并移至<strong>dir</strong>指定的目录中。</p>
+<p>以上面安装<strong>potplayer</strong>失败为例:</p>
+<ul>
+<li>App的下载地址为: <code>https://t1.daumcdn.net/potplayer/PotPlayer/Version/201021/PotPlayerSetup64.exe</code>,手动下载后</li>
+<li>改名为<code>potplayer#201021#https_t1.daumcdn.net_potplayer_PotPlayer_Version_201021_PotPlayerSetup64.exe_dl.7z</code></li>
+<li>然后移动到目录<code>D:\Scoop\cache</code></li>
+</ul>
+<p>这时只是手动做了下载这一步的工作，安装还需要：</p>
+<pre><code class="language-powershell"># 前面安装失败，scoop仍然会认为已经安装，这里卸载一下，scoop会认为已经卸载了
+scoop uninstall potplayer
+# 再次安装，scoop从cache目录会找到我们下好的app进行安装
+scoop install potplayer
+</code></pre>
+<p>至此，安装成功</p>
+<p>have fun!</p>
+<h2 id="section-5">参考</h2>
+<ul>
+<li><a href="https://scoop.sh/">Scoop</a></li>
+<li><a href="https://sspai.com/post/52496">「一行代码」搞定软件安装卸载，用 Scoop 管理你的 Windows 软件</a></li>
+<li><a href="https://www.jianshu.com/p/50993df76b1c">scoop——强大的Windows命令行包管理工具</a></li>
+<li><a href="https://sspai.com/post/52710#!">给 Scoop 加上这些软件仓库，让它变成强大的 Windows 软件管理器</a></li>
+</ul>
+<p>本文完</p>
+
 
     <!-- Site Header -->
     <footer class="site-footer">
