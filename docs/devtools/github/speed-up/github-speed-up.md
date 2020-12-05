@@ -8,5 +8,6 @@ DestinationFileName: index.html
 comment:
   - 镜像访问
   - https://www.cnblogs.com/july-sunny/p/13697156.html
+Excluded: true
 ---
 

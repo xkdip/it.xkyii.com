@@ -4,7 +4,7 @@ layout: post
 category: 自媒体运营
 tag: 未完成
 DestinationFileName: index.html
-comment:
+Excluded: true
 ---
 
 现在好像只需要在其站长工具页面添加域名，并且验证一下网站

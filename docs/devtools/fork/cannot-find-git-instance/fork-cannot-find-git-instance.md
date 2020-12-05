@@ -7,4 +7,5 @@ tag: 未完成
 DestinationFileName: index.html
 comment:
   - 主要是如何配置gitinstance
+Excluded: true
 ---

@@ -8,4 +8,5 @@ DestinationFileName: index.html
 comment:
   - 使用手机网络避免安装问题
   - 禁用git
+Excluded: true
 ---
