@@ -8,7 +8,7 @@ DestinationFileName: index.html
 
 **HTTP**是无状态协议，它本身不能以状态来区分和管理请求和响应。当服务端需要记录用户的状态时，就需要某种机制来记录和识别。
 
-**会话(Session)** 跟踪是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是**Cookie**与**Session**。
+**会话(Session)** 跟踪就是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是**Cookie**与**Session**，本篇介绍**Cookie**。
 
 ## Cookie
 **Cookie**技术是客户端的解决方案。
@@ -45,12 +45,23 @@ Set-Cookie有几个主要的属性：
 
 
 ### 服务端操作Cookie(Java)
+
+添加Cookie
 ```java
 Cookie cookie = new Cookie("username","lili");  // 新建Cookie
 cookie.setDomain(".example.com");               // 设置域名
 cookie.setPath("/");                            // 设置路径
 cookie.setMaxAge(Integer.MAX_VALUE);            // 设置有效期
 response.addCookie(cookie);                     // 输出到客户端
+```
+
+获取Cookie
+```java
+Cookie[] cookies = request.getCookies();
+for(Cookie cookie : cookies){
+    // cookie.getName();
+    // cookie.getValue();
+}
 ```
 
 ### 客户端操作Cookie(JavaScript)
@@ -94,3 +105,9 @@ function delCookie(name) {
 }
 ```
 
+## 参考
+* [Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
+* [Set-Cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)
+* [认识HTTP----Cookie和Session篇](https://zhuanlan.zhihu.com/p/27669892)
+
+本文完
