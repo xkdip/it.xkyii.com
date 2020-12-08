@@ -3,9 +3,8 @@ title: Markdown 注释
 layout: post
 catagory: 开发语言
 tag: Markdown
-created: 2020.12.02 16:35:11
-updated: 2020.12.02 16:35:11
-Published: "=> doc.GetDateTime(\"updated\")"
+created: 2020.12.01 16:35:11
+updated: 2020.12.01 16:35:11
 DestinationFileName: index.html
 ---
 
