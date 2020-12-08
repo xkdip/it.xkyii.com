@@ -1,6 +1,6 @@
 ---
-title: 告辞
-tagline: 不是我我没有别瞎说啊
+title: 鱼猫小栈
+tagline: 躺着写Bug
 layout: home
 ArchivePageSize: 10
 ArchiveSources: "{languages,devtools,softs,protocols}/**/*"
