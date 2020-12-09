@@ -25,7 +25,7 @@ DestinationFileName: index.html
 ## Session时效
 由于使用不同的客户端技术保存**Session Id**，他们的失效时间也不一样，通常在*页面关闭*或*浏览器关闭*，或者*Cookie失效*时，**Session Id**丢失，导致无法检索到旧的**Session**，从而造成对**Session**时效的误解。
 
-而其实，最终**Session**的时效取决于服务端的实现。
+而其实，最终**Session**的时效取决于服务端的实现。只要服务端**Session**还未失效，就算客户端重启了电脑，你把**Session Id**背下来发给服务端，服务端还是会认的嘛。
 
 ## 操作Session
 以`Java Servlet`为例：
