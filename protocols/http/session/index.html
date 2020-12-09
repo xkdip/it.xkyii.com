@@ -1,0 +1,114 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#157878">
+    <title>Http - Session&#x7BC7;</title>
+    <link href="/scss/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Site Header -->
+  
+<header class="site-header" role="banner">
+  <div class="wrapper">
+    <!-- 主页链接 -->
+      <a class="site-title" href='/'>&#x4E3B;&#x9875;</a>
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </span>
+      </label>
+
+      <!-- <div class="trigger">
+          <a class="page-link" href='http://examples.xkyii.com'>&#x793A;&#x4F8B;</a>
+          <a class="page-link" href='http://tools.xkyii.com'>&#x5DE5;&#x5177;</a>
+      </div> -->
+    </nav>
+  </div>
+</header>
+
+
+  <section class="page-header" style="padding-top: 80px; padding-bottom: 40px; background: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.0)), url('/assets/img/home-header.jpg') center center repeat;">
+    <h1 class="project-name">Http - Session&#x7BC7;</h1>
+      <a>Http</a>
+  </section>
+
+  <section class="main-content">
+    <p><strong>HTTP</strong>是无状态协议，它本身不能以状态来区分和管理请求和响应。当服务端需要记录用户的状态时，就需要某种机制来记录和识别。</p>
+<p><strong>会话(Session)</strong> 跟踪就是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是<strong>Cookie</strong>与<strong>Session</strong>，本篇介绍<strong>Session</strong>。</p>
+<h2 id="session">Session</h2>
+<p><strong>Session</strong>技术是服务端的解决方案。使用一种类似散列表的结构来保存信息；</p>
+<h2 id="session-id">Session Id</h2>
+<p>当程序需要为某个客户端的请求创建一个<strong>Session</strong>的时候，首先检查客户端的请求里是否已包含了<strong>Session</strong>的标识，一般称为<strong>Session Id</strong>，有则按此<strong>Session Id</strong>来检索<strong>Session</strong>信息，否则新建一个。</p>
+<p>客户端通常有如下几种方式来记录<strong>Session Id</strong></p>
+<ol>
+<li>借助<strong>Cookie</strong>来记录；</li>
+<li>使用<strong>URL重写</strong>；即把<strong>Session Id</strong>直接附加在Url后面，如： <em><a href="http://your.url?jsessionid=session_id_value">http://your.url?jsessionid=session_id_value</a></em></li>
+<li>表单隐藏域；即在页面上添加一个隐藏字段，在表单提交时发送给服务端。</li>
+</ol>
+<h2 id="session-1">Session时效</h2>
+<p>由于使用不同的客户端技术保存<strong>Session Id</strong>，他们的失效时间也不一样，通常在<em>页面关闭</em>或<em>浏览器关闭</em>，或者<em>Cookie失效</em>时，<strong>Session Id</strong>丢失，导致无法检索到旧的<strong>Session</strong>，从而造成对<strong>Session</strong>时效的误解。</p>
+<p>而其实，最终<strong>Session</strong>的时效取决于服务端的实现。只要服务端<strong>Session</strong>还未失效，就算客户端重启了电脑，你把<strong>Session Id</strong>背下来发给服务端，服务端还是会认的嘛。</p>
+<h2 id="session-2">操作Session</h2>
+<p>以<code>Java Servlet</code>为例：</p>
+<p>创建<strong>Session</strong></p>
+<pre><code class="language-java">  &#64;PostMapping(&quot;/sessionInfo&quot;)
+  public void postSessionInfo(HttpServletRequest request, String userName) {
+      HttpSession session = request.getSession();
+      // 设置：userName
+      session.setAttribute(&quot;userName&quot;, userName);
+      // 设置：过期时间(秒)
+      session.setMaxInactiveInterval(30*60);
+  }
+</code></pre>
+<p>获取<strong>Session</strong>信息</p>
+<pre><code class="language-java">  &#64;GetMapping(&quot;/sessionInfo&quot;)
+  public void getSessionInfo(HttpServletRequest request) {
+      HttpSession session = request.getSession();
+      // 获取：userName
+      String userName = (String) session.getAttribute(&quot;userName&quot;);
+      // 获取：session的创建时间
+      long creationTime = session.getCreationTime();
+      // 获取：上次与服务器交互时间
+      long lastAccessedTime = session.getLastAccessedTime();
+      // 获取: sessionId
+      String id = session.getId();
+      // 获取:session过期时间
+      int timeout = session.getMaxInactiveInterval();
+
+      // 销毁session
+      session.invalidate();
+  }
+</code></pre>
+<p>本文完</p>
+
+
+    <!-- Site Header -->
+    <footer class="site-footer">
+  <p class="copyright text-muted m-0">Copyright © 2020 - xkyii</p>
+</footer>
+
+  </section>
+
+  <!-- Site Stat -->
+  
+<div style="display:none">
+  <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279457447&web_id=1279457447"></script>
+</div>
+
+</body>
+
+</html>
